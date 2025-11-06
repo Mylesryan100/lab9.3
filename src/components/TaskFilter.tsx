@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import type { TaskStatus } from "./TaskList";
 
 export default function TaskFilters({ filters, setFilters }: Props) {
@@ -12,7 +12,7 @@ export interface TaskFilterProps {
   }) => void;
 }
 
-import { useState } from "react";
+
 
 export interface TaskFilterProps {
   onFilterChange: (filters: {

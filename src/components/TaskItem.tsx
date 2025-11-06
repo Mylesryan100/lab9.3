@@ -1,13 +1,11 @@
 import type { TaskStatus, Task } from "./TaskList";
+import { useState } from "react"
 
 export interface TaskItemProps {
   task: Task;
   onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
   onDelete: (taskId: string) => void;
 }
-
-import type { TaskStatus, Task } from "./TaskList";
-import { useState } from "react";
 
 export interface TaskItemProps {
   task: Task;
