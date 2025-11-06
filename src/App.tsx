@@ -54,27 +54,31 @@ function App() {
       dueDate: "2025-06-10",
     },
   ])
- const onDelete = () => {
+ const onDelete = (taskId: string) => {
+    setTasks(prev => {
+      const next = prev.filter(t => t.id !== taskId);
+      console.log("delete", { taskId, before: prev.length, after: next.length });
+      return next;
+    });
+  };
 
-    }
-
-    const onStatusChange = () => {};
+  const onStatusChange = (taskId: string, newStatus: TaskStatus) => {
+    setTasks(prev =>
+      prev.map(t => (t.id === taskId ? { ...t, status: newStatus } : t))
+    );
+  };
 
   return (
-    <div className="p-5 bg-zinc-900 text-white h-screen">
-      <h1 className="text-5x1">Tasks Manager App</h1> 
+    <div className="h-screen bg-zinc-900 p-5 text-white">
+      <h1 className="text-5xl">Tasks Manager App</h1>
 
-      {/*<UserList  /> */}
-
-
-      {/*<ContactForm /> */}
-
-      <TaskList tasks={tasks}
-       onDelete={onDelete}
-       onStatusChange={onStatusChange}
-       />
+      <TaskList
+        tasks={tasks}
+        onDelete={onDelete}
+        onStatusChange={onStatusChange}
+      />
     </div>
-  )
+  );
 }
 
 export default App;

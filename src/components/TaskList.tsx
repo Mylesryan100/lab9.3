@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export type TaskStatus = "pending" | "in-progress" | "completed";
@@ -10,7 +9,7 @@ export interface Task {
   description: string;
   status: TaskStatus;
   priority: TaskPriority;
-  dueDate: string; 
+  dueDate: string;
 }
 
 export interface TaskListProps {
@@ -62,14 +61,18 @@ function TaskListItem({
         statusBorder,
         overdue ? "ring-1 ring-rose-300/60 dark:ring-rose-800/50" : "",
       ].join(" ")}
-      aria-label={`${task.title}${overdue ? " (overdue)" : ""} — priority ${task.priority}`}
+      aria-label={`${task.title}${overdue ? " (overdue)" : ""} — priority ${
+        task.priority
+      }`}
     >
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <strong
             className={[
               "truncate text-base font-semibold text-slate-900 dark:text-slate-100",
-              task.status === "completed" ? "line-through text-slate-400 dark:text-slate-500" : "",
+              task.status === "completed"
+                ? "line-through text-slate-400 dark:text-slate-500"
+                : "",
             ].join(" ")}
             title={task.title}
           >
@@ -97,11 +100,18 @@ function TaskListItem({
         </div>
 
         {task.description && (
-          <p className="mt-1 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">{task.description}</p>
+          <p className="mt-1 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">
+            {task.description}
+          </p>
         )}
 
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-          <span className={["inline-flex items-center gap-1 rounded-full border px-2 py-0.5", priorityPill].join(" ")}>
+          <span
+            className={[
+              "inline-flex items-center gap-1 rounded-full border px-2 py-0.5",
+              priorityPill,
+            ].join(" ")}
+          >
             Priority: {task.priority}
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 px-2 py-0.5 text-slate-600 dark:border-slate-800 dark:text-slate-400">
@@ -118,7 +128,9 @@ function TaskListItem({
           id={`status-${task.id}`}
           aria-label={`Change status for ${task.title}`}
           value={task.status}
-          onChange={(e) => onStatusChange(task.id, e.target.value as TaskStatus)}
+          onChange={(e) =>
+            onStatusChange(task.id, e.target.value as TaskStatus)
+          }
           className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-800 shadow-sm focus:outline-none focus:ring-4 focus:ring-sky-300/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-sky-800/40"
         >
           <option value="pending">Pending</option>
@@ -139,8 +151,11 @@ function TaskListItem({
   );
 }
 
-
-export default function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps) {
+export default function TaskList({
+  tasks,
+  onStatusChange,
+  onDelete,
+}: TaskListProps) {
   if (!tasks.length) {
     return (
       <div
@@ -155,11 +170,13 @@ export default function TaskList({ tasks, onStatusChange, onDelete }: TaskListPr
 
   return (
     <section className="mt-4">
-      <h2 className="mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100">Task List</h2>
+      <h2 className="mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Task List
+      </h2>
       <ul className="grid gap-3" aria-live="polite">
         {tasks.map((task) => (
           <TaskListItem
-            key={task.id}                
+            key={task.id}
             task={task}
             onStatusChange={onStatusChange}
             onDelete={onDelete}
