@@ -2,7 +2,10 @@
 //import UserList from './components/UserList'
 import { useState } from 'react';
 import './App.css'
-import TaskList,{type Task} from './components/TaskList';
+// import TaskList,{type Task} from './components/TaskList';
+// import TaskItem from './components/TaskItem';
+// import TaskFilter from './components/TaskFilter';
+import TaskList, { type Task, type TaskStatus } from "./components/TaskList";
 
 
 function App() {

@@ -1,5 +1,5 @@
 import type { TaskStatus, Task } from "./TaskList";
-import { useState } from "react"
+import { useState } from "react";
 
 export interface TaskItemProps {
   task: Task;
@@ -15,11 +15,10 @@ export interface TaskItemProps {
 
 function TaskItem({ task, onStatusChange }: TaskItemProps) {
   const [currentStatus, setCurrentStatus] = useState(task.status);
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentStatus(e.target.value);
-    onStatusChange(task.id, e.target.value)
-  }
+    onStatusChange(task.id, e.target.value);
+  };
   return (
     <div className="mb-5">
       <div>
@@ -30,10 +29,10 @@ function TaskItem({ task, onStatusChange }: TaskItemProps) {
         <div>Due Date: {task.dueDate}</div>
       </div>
 
-      <select value={currentStatus} onChange={handleChange}> 
-        <option value='pending'>Pending</option>
+      <select value={currentStatus} onChange={handleChange}>
+        <option value="pending">Pending</option>
         <option value="in-progress">In Progress</option>
-        <option value='completed'>Completed</option>
+        <option value="completed">Completed</option>
       </select>
     </div>
   );
