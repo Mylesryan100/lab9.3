@@ -8,7 +8,7 @@ export interface TaskItemProps {
 
 import type { TaskStatus, Task } from "./TaskList";
 import { useState } from "react";
-// types/index.ts
+
 export interface TaskItemProps {
   task: Task;
   onStatusChange: (taskId: string, newStatus: TaskStatus) => void;

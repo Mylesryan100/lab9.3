@@ -1,7 +1,6 @@
 
 import React from "react";
 
-/* ----------------------------- Local Types ----------------------------- */
 export type TaskStatus = "pending" | "in-progress" | "completed";
 export type TaskPriority = "low" | "medium" | "high";
 
@@ -11,7 +10,7 @@ export interface Task {
   description: string;
   status: TaskStatus;
   priority: TaskPriority;
-  dueDate: string; // ISO string
+  dueDate: string; 
 }
 
 export interface TaskListProps {
@@ -20,7 +19,6 @@ export interface TaskListProps {
   onDelete: (taskId: string) => void;
 }
 
-/* ----------------------------- Utilities ------------------------------ */
 function formatDate(iso: string) {
   const d = new Date(iso);
   return Number.isNaN(+d) ? iso : d.toLocaleDateString();
@@ -66,7 +64,6 @@ function TaskListItem({
       ].join(" ")}
       aria-label={`${task.title}${overdue ? " (overdue)" : ""} — priority ${task.priority}`}
     >
-      {/* Left: content */}
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <strong
@@ -113,7 +110,6 @@ function TaskListItem({
         </div>
       </div>
 
-      {/* Right: actions */}
       <div className="flex shrink-0 items-center gap-2">
         <label className="sr-only" htmlFor={`status-${task.id}`}>
           Change status
